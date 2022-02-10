@@ -16,13 +16,9 @@ public class Controllers {
     @GetMapping("/secrets")
     public String restricted(Principal p, Model model){
         String temp = p.toString();
-        temp = temp.substring(temp.indexOf("given_name="));
-        String name = temp.substring(0, temp.indexOf(",")).replace("given_name=","");
-        temp = p.toString();
-        temp = temp.substring(temp.indexOf("email="));
-        String email = temp.substring(0, temp.indexOf("}")).replace("email=","");
-        model.addAttribute("email", email);
-        model.addAttribute("name", name);
+        System.out.println(temp);
+        //model.addAttribute("email", "email");
+        model.addAttribute("name", p.getName());
         return "/secret";
     }
 }
